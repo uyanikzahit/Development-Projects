@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="60dp"
         android:backgroundTint="@color/design_default_color_error"
         android:ems="10"
@@ -37,12 +37,12 @@
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="60dp"
         android:backgroundTint="@color/design_default_color_error"
         android:ems="10"
         android:hint="Password"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:textColor="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
