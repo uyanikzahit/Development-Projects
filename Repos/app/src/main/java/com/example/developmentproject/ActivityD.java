@@ -1,7 +1,7 @@
 package com.example.developmentproject;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,20 +9,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class YeniActivity extends AppCompatActivity {
+public class ActivityD extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_yeni);
+        setContentView(R.layout.activity_d);
+    }
 
-      Kisiler gelenKisi = (Kisiler) getIntent().getSerializableExtra("nesne");
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
-        Log.e("Gelen Tcno",String.valueOf(gelenKisi.getTcno()));
-        Log.e("Gelen İsim",gelenKisi.getIsim());
-        Log.e("Gelen Boy",String.valueOf(gelenKisi.getBoy()));
+        Intent intent = new Intent(ActivityD.this, ActivityB.class);
 
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
     }
 }
