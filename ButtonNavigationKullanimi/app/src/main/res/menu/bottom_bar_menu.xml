@@ -9,5 +9,5 @@
     <item
         android:id="@+id/ikinciFragment"
         android:icon="@drawable/resim_2"
-        android:title="İki" />
+        android:title="@string/Iki" />
 </menu>
