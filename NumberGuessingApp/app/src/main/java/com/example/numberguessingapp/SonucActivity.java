@@ -23,6 +23,7 @@ public class SonucActivity extends AppCompatActivity {
     private boolean sonuc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sonuc);
