@@ -24,17 +24,20 @@ public class Kelimelerdao {
 
         Cursor c = dbx.rawQuery("SELECT * FROM kelimeler",null);
 
+        int kelimeIdIndex = c.getColumnIndex("kelime_id");
+        int ingilizceIndex = c.getColumnIndex("ingilizce");
+        int turkceIndex = c.getColumnIndex("turkce");
+
         while (c.moveToNext()) {
-            Kelimeler kelimeler = new Kelimeler(
-                    c.getInt(c.getColumnIndexOrThrow("kelime_id")),
-                    c.getString(c.getColumnIndexOrThrow("ingilizce")),
-                    c.getString(c.getColumnIndexOrThrow("turkce"))
-            );
+            if (kelimeIdIndex >= 0 && ingilizceIndex >= 0 && turkceIndex >= 0) {
+                Kelimeler kelimeler = new Kelimeler(
+                        c.getInt(kelimeIdIndex),
+                        c.getString(ingilizceIndex),
+                        c.getString(turkceIndex)
+                );
+            }
         }
 
-
-            kelimelerArrayList.add(kelime);
-        }
 
         return kelimelerArrayList;
 
