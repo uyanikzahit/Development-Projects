@@ -22,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
 
         vt = new VeriTabaniYardimcisi(this);
 
-        new Kelimelerdao().kelimeEkle(vt,"door","kapı");
-        new Kelimelerdao().kelimeEkle(vt,"necessrey","gerekli");
-        new Kelimelerdao().kelimeEkle(vt,"want","istemek");
-        new Kelimelerdao().kelimeEkle(vt,"taste","tadı olmak");
-        new Kelimelerdao().kelimeEkle(vt,"think","düşünmek");
+//        new Kelimelerdao().kelimeEkle(vt,"door","kapı");
+//        new Kelimelerdao().kelimeEkle(vt,"necessrey","gerekli");
+//        new Kelimelerdao().kelimeEkle(vt,"want","istemek");
+//        new Kelimelerdao().kelimeEkle(vt,"taste","tadı olmak");
+//        new Kelimelerdao().kelimeEkle(vt,"think","düşünmek");
 
+
+        new Kelimelerdao().kelimeSil(vt,9
+        );
 
         ArrayList<Kelimeler> gelenKelimelerListesi = new Kelimelerdao().tumKelimeler(vt);
 
