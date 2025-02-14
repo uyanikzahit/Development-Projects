@@ -1,27 +1,36 @@
 package com.example.kiileruygulamas;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private Toolbar toolbar;
     private RecyclerView rv;
     private FloatingActionButton fab;
+    private ArrayList<Kisiler> kisilerArrayList;
+    private KisilerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +45,24 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         toolbar.setTitle("Kişiler Uygulaması");
         setSupportActionBar(toolbar);
 
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+
+        kisilerArrayList = new ArrayList<>();
+
+        Kisiler k1 = new Kisiler(1,"Zahit","415212");
+        Kisiler k2 = new Kisiler(2,"Zeynep","414554");
+
+        kisilerArrayList.add(k1);
+        kisilerArrayList.add(k2);
+
+        adapter = new KisilerAdapter(this,kisilerArrayList);
+        rv.setAdapter(adapter);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alertGoster();
 
             }
         });
@@ -73,5 +97,40 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     public void alertGoster(){
         LayoutInflater layout = LayoutInflater  .from(this);
+        View tasarim = layout.inflate(R.layout.alert_tasarim,null);
+
+        EditText editTextAd = tasarim.findViewById(R.id.editTextAd);
+        EditText editTextTel = tasarim.findViewById(R.id.editTextTel);
+
+        AlertDialog.Builder ad = new AlertDialog.Builder(this);
+        ad.setTitle("Kişi Ekle");
+        ad.setView(tasarim);
+        ad.setPositiveButton("Ekle", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                String kisi_ad = editTextAd.getText().toString().trim();
+                String kisi_tel = editTextTel.getText().toString().trim();
+
+                Toast.makeText(getApplicationContext(),kisi_ad+" - "+kisi_tel,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        ad.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        ad.create().show();
+
     }
 }
+
+
+
+
+
+
