@@ -26,7 +26,7 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
     private List<Kisiler>kisilerListe;
 
     public KisilerAdapter(Context mcontext, List<Kisiler> kisilerListe) {
-        this.mContext = mContext;
+        this.mContext = mcontext;
         this.kisilerListe = kisilerListe;
     }
 
@@ -46,7 +46,7 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
         holder.imageViewNokta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(mContext,holder.imageViewNokta);
+                PopupMenu popupMenu = new PopupMenu(view.getContext(),holder.imageViewNokta);
                 popupMenu.getMenuInflater().inflate(R.menu.pop_up_menu,popupMenu.getMenu());
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
