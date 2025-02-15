@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private ArrayList<Kisiler> kisilerArrayList;
     private KisilerAdapter adapter;
 
+    private Veritabani vt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,19 +44,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         rv = findViewById(R.id.rv);
         fab = findViewById(R.id.fab);
 
+        vt = new Veritabani(this);
+
         toolbar.setTitle("Kişiler Uygulaması");
         setSupportActionBar(toolbar);
+
+        kisilerArrayList = new KisilerDao().tumKisiler(vt);
 
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        kisilerArrayList = new ArrayList<>();
 
-        Kisiler k1 = new Kisiler(1,"Zahit","415212");
-        Kisiler k2 = new Kisiler(2,"Zeynep","414554");
 
-        kisilerArrayList.add(k1);
-        kisilerArrayList.add(k2);
 
         adapter = new KisilerAdapter(this,kisilerArrayList);
         rv.setAdapter(adapter);
@@ -111,6 +112,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
                 String kisi_ad = editTextAd.getText().toString().trim();
                 String kisi_tel = editTextTel.getText().toString().trim();
+
+                new KisilerDao().kisiEkle(vt,kisi_ad,kisi_tel);
+
+                kisilerArrayList = new KisilerDao().tumKisiler(vt);
+
+                adapter = new KisilerAdapter(MainActivity.this,kisilerArrayList);
+                rv.setAdapter(adapter);
+
 
                 Toast.makeText(getApplicationContext(),kisi_ad+" - "+kisi_tel,Toast.LENGTH_SHORT).show();
 
