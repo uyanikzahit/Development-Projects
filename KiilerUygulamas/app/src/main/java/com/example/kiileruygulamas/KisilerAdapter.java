@@ -25,9 +25,12 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
     private Context mContext;
     private List<Kisiler>kisilerListe;
 
-    public KisilerAdapter(Context mcontext, List<Kisiler> kisilerListe) {
-        this.mContext = mcontext;
+    private Veritabani vt;
+
+    public KisilerAdapter(Context mContext, List<Kisiler> kisilerListe, Veritabani vt) {
+        this.mContext = mContext;
         this.kisilerListe = kisilerListe;
+        this.vt = vt;
     }
 
     @NonNull
@@ -39,7 +42,7 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
 
     @Override
     public void onBindViewHolder(@NonNull CardTasarimTutucu holder, int position) {
-        Kisiler kisi = kisilerListe.get(position);
+        final Kisiler kisi = kisilerListe.get(position);
 
         holder.textViewKisiBilgi.setText(kisi.getKisi_ad()+" - "+ kisi.getKisi_tel());
 
@@ -51,14 +54,28 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem item) {
+                    public boolean onMenuItemClick(MenuItem menuItem) {
 
-                        if (item.getItemId()==R.id.action_sil){
-                            Toast.makeText(mContext.getApplicationContext(),"Sil Seçildi",Toast.LENGTH_SHORT).show();
+                        if (menuItem.getItemId() == R.id.action_sil) {
+                            Snackbar.make(holder.imageViewNokta, "Kişi Silinsin Mi?", Snackbar.LENGTH_SHORT)
+                                    .setAction("Evet", new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            new KisilerDao().kisiSil(vt,kisi.getKisi_id());
+
+                                            kisilerListe = new KisilerDao().tumKisiler(vt);
+                                            notifyDataSetChanged();
+
+                                        }
+                                    })
+                                    .show();
                             return true;
-                        }else
-                            alertGoster();
-                        return true;
+                        } else if (menuItem.getItemId() == R.id.action_guncelle) {
+                            alertGoster(kisi);
+                            return true;
+                        }
+                        return false;
+
                     }
 
                 });
@@ -87,12 +104,15 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
         }
     }
 
-    public void alertGoster(){
+    public void alertGoster(Kisiler kisi){
         LayoutInflater layout = LayoutInflater.from(mContext);
         View tasarim = layout.inflate(R.layout.alert_tasarim,null);
 
-        EditText editTextAd = tasarim.findViewById(R.id.editTextAd);
-        EditText editTextTel = tasarim.findViewById(R.id.editTextTel);
+        final EditText editTextAd = tasarim.findViewById(R.id.editTextAd);
+        final EditText editTextTel = tasarim.findViewById(R.id.editTextTel);
+
+        editTextAd.setText(kisi.getKisi_ad());
+        editTextTel.setText(kisi.getKisi_tel());
 
         AlertDialog.Builder ad = new AlertDialog.Builder(mContext);
         ad.setTitle("Kişi Güncelle");
@@ -104,7 +124,11 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
                 String kisi_ad = editTextAd.getText().toString().trim();
                 String kisi_tel = editTextTel.getText().toString().trim();
 
-                Toast.makeText(mContext,kisi_ad+" - "+kisi_tel,Toast.LENGTH_SHORT).show();
+                new KisilerDao().kisiGuncelle(vt,kisi.getKisi_id(),kisi_ad,kisi_tel);
+
+                kisilerListe = new KisilerDao().tumKisiler(vt);
+                notifyDataSetChanged();
+
 
             }
         });

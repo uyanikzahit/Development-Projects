@@ -46,18 +46,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         vt = new Veritabani(this);
 
-        toolbar.setTitle("Kişiler Uygulaması");
-        setSupportActionBar(toolbar);
-
-        kisilerArrayList = new KisilerDao().tumKisiler(vt);
 
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
+        toolbar.setTitle("Kişiler Uygulaması");
+        setSupportActionBar(toolbar);
 
 
 
-        adapter = new KisilerAdapter(this,kisilerArrayList);
+        kisilerArrayList = new KisilerDao().tumKisiler(vt);
+
+        adapter = new KisilerAdapter(this,kisilerArrayList,vt);
         rv.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +93,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onQueryTextChange(String newText) {
         Log.e("onQueryTextChange",newText);
 
+        kisilerArrayList = new KisilerDao().kisiAra(vt,newText);
+
+        adapter = new KisilerAdapter(this,kisilerArrayList,vt);
+        rv.setAdapter(adapter);
+
         return false;
     }
 
@@ -117,11 +122,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
                 kisilerArrayList = new KisilerDao().tumKisiler(vt);
 
-                adapter = new KisilerAdapter(MainActivity.this,kisilerArrayList);
+                adapter = new KisilerAdapter(MainActivity.this,kisilerArrayList,vt);
                 rv.setAdapter(adapter);
-
-
-                Toast.makeText(getApplicationContext(),kisi_ad+" - "+kisi_tel,Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -26,11 +26,12 @@ public class KisilerDao {
     }
 
 
-    public ArrayList<Kisiler> tumKisiler(Veritabani vt,String aramaKelime){
+    public ArrayList<Kisiler> kisiAra(Veritabani vt,String aramaKelime){
         ArrayList<Kisiler> kisilerArrayList = new ArrayList<>();
         SQLiteDatabase db = vt.getWritableDatabase();
 
-        Cursor c =db.rawQuery("SELECT * FROM kisiler WHERE kisi_ad like`%+aramaKelime+%`",null);
+        Cursor c = db.rawQuery("SELECT * FROM kisiler WHERE kisi_ad LIKE ?", new String[]{"%" + aramaKelime + "%"});
+
 
         while (c.moveToNext()){
             Kisiler k = new Kisiler(c.getInt(c.getColumnIndexOrThrow("kisi_id"))
@@ -46,7 +47,7 @@ public class KisilerDao {
 
     public void kisiSil(Veritabani vt, int kisi_id){
         SQLiteDatabase db = vt.getWritableDatabase();
-        db.delete("kisiler","kisi_id", new String[]{String.valueOf(kisi_id)});
+        db.delete("kisiler","kisi_id=?", new String[]{String.valueOf(kisi_id)});
         db.close();
     }
 
