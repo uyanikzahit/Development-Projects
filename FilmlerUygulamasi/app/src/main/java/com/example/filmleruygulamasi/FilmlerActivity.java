@@ -18,6 +18,8 @@ public class FilmlerActivity extends AppCompatActivity {
     private RecyclerView filmlerRv;
     private ArrayList<Filmler>filmlerArrayList;
     private FilmlerAdapter adapter;
+    private Kategoriler kategori;
+    private Veritabani vt;
 
 
 
@@ -30,21 +32,21 @@ public class FilmlerActivity extends AppCompatActivity {
         toolbar2 = findViewById(R.id.toolbar2);
         filmlerRv = findViewById(R.id.filmlerRv);
 
-        toolbar2.setTitle("Filmler");
+        vt = new Veritabani(this);
+
+
+        kategori = (Kategoriler) getIntent().getSerializableExtra("kategori_nesne");
+
+
+        toolbar2.setTitle(kategori.getKategori_ad());
         setSupportActionBar(toolbar2);
+
+
+        filmlerArrayList = new FilmlerDao().tumFilmlerByKategoriId(vt,kategori.getKategori_id());
 
         filmlerRv.setHasFixedSize(true);
         filmlerRv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
 
-        filmlerArrayList = new ArrayList<>();
-
-        Filmler f1 = new Filmler(1,"Django",2007,"django",null,null);
-        Filmler f2 = new Filmler(2,"Inception",2009,"inception",null,null);
-        Filmler f3 = new Filmler(3,"The Pianist",20011,"thepianist",null,null);
-
-        filmlerArrayList.add(f1);
-        filmlerArrayList.add(f2);
-        filmlerArrayList.add(f3);
 
         adapter = new FilmlerAdapter(this,filmlerArrayList);
         filmlerRv.setAdapter(adapter);

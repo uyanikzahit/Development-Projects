@@ -30,8 +30,8 @@ public class DetayActivity extends AppCompatActivity {
         film = (Filmler) getIntent().getSerializableExtra("nesne");
 
         textViewFilmAdi.setText(film.getFilm_ad());
-        textViewFilmAdi.setText(String.valueOf(film.getFilm_yil()));
-//        textViewYonetmen.setText(film.getYonetmen().getYonetmen_ad());
+        textViewYil.setText(String.valueOf(film.getFilm_yil()));
+        textViewYonetmen.setText(film.getYonetmen().getYonetmen_ad());
 
         imageViewResim.setImageResource(getResources().getIdentifier(film.getFilm_resim(),
                 "drawable",getPackageName()));

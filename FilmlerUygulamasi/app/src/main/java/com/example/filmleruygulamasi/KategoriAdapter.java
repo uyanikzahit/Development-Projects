@@ -41,6 +41,8 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.CardTa
 
                 Intent intent = new Intent(mContext,FilmlerActivity.class);
 
+                intent.putExtra("kategori_nesne",kategori);
+
                 mContext.startActivity(intent);
 
             }
