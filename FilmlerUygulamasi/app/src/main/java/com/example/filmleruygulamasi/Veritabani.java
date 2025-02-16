@@ -15,17 +15,33 @@ public class Veritabani extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS \"kategoriler\" (\n" +
-                "\t\"kategori_id\"\tINTEGER,\n" +
-                "\t\"kategori_ad\"\tTEXT,\n" +
-                "\tPRIMARY KEY(\"kategori_id\" AUTOINCREMENT)\n" +
-                ");");
-        sqLiteDatabase.execSQL();
-        sqLiteDatabase.execSQL();
+                "    \"kategori_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                "    \"kategori_ad\" TEXT\n" +
+                ");\n");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS \"yonetmenler\" (\n" +
+                "    \"yonetmen_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                "    \"yonetmen_ad\" TEXT\n" +
+                ");\n");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS \"filmler\" (\n" +
+                "    \"film_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                "    \"film_ad\" TEXT,\n" +
+                "    \"film_yil\" INTEGER,\n" +
+                "    \"film_resim\" TEXT,\n" +
+                "    \"kategori_id\" INTEGER,\n" +
+                "    \"yonetmen_id\" INTEGER,\n" +
+                "    FOREIGN KEY(\"kategori_id\") REFERENCES \"kategoriler\"(\"kategori_id\"),\n" +
+                "    FOREIGN KEY(\"yonetmen_id\") REFERENCES \"yonetmenler\"(\"yonetmen_id\")\n" +
+                ");\n");
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS kategoriler");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS yonetmenler");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS filmler");
+
+        onCreate(sqLiteDatabase);
 
     }
 }

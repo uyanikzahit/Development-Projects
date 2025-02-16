@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView kategoriRv;
     private ArrayList<Kategoriler>kategorilerArrayList;
     private KategoriAdapter adapter;
+
+    private Veritabani vt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,22 +31,32 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         kategoriRv = findViewById(R.id.kategoriRv);
 
+        veritabaniKoplaya();
+
+        vt = new Veritabani(this);
+
         toolbar.setTitle("Kategoriler");
         setSupportActionBar(toolbar);
 
         kategoriRv.setHasFixedSize(true);
         kategoriRv.setLayoutManager(new LinearLayoutManager(this));
 
-        kategorilerArrayList = new ArrayList<>();
-
-        Kategoriler k1 = new Kategoriler(1,"Komedi");
-        Kategoriler k2 = new Kategoriler(2,"Polisiye");
-
-        kategorilerArrayList.add(k1);
-        kategorilerArrayList.add(k2);
+        kategorilerArrayList = new KategoriDao().tumKategoriler(vt);
 
         adapter = new KategoriAdapter(this,kategorilerArrayList);
         kategoriRv.setAdapter(adapter);
 
+    }
+
+    public void veritabaniKoplaya(){
+        DatabaseCopyHelper helper = new DatabaseCopyHelper(this);
+
+        try {
+            helper.createDataBase();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        helper.openDataBase();
     }
 }
