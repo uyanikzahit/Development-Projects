@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "825983494196",
+    "project_id": "internetbildirim-6f8ac",
+    "storage_bucket": "internetbildirim-6f8ac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825983494196:android:3cc25c0aacb71d6206c261",
+        "android_client_info": {
+          "package_name": "com.example.fbpushnotification"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsJVeRZyIAOBItF6msS9N8Zh5JeOIl_lw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
