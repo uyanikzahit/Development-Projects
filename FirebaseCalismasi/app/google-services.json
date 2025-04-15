@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "963842367223",
+    "project_id": "fir-calismasi-5cbbb",
+    "storage_bucket": "fir-calismasi-5cbbb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963842367223:android:6dc3036c36e792b35d7df2",
+        "android_client_info": {
+          "package_name": "com.example.firebasecalismasi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd2Zw014N8ON-Q0jdzMH_PfZIgvY5-V6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
