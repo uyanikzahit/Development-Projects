@@ -2,14 +2,17 @@ package com.example.firebasecalismasi;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +27,10 @@ import java.util.Queue;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView cikti;
+    private DatabaseReference refYapilacaklar;
+    private DatabaseReference refKisiler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("kisiler");
+
+        refYapilacaklar = database.getReference("yapilacaklar");
+        refKisiler = database.getReference("kisiler");
+
 
 /*        Kisiler kisi1= new Kisiler("","Ahmet",18);
         Kisiler kisi2= new Kisiler("","Mehmet",11);
@@ -59,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         myRef.child("-ONyANak-W7JrE4jqF6L").updateChildren(bilgiler);*/
 
 //        Query kisilerSorgu = myRef.orderByChild("kisi_yas").equalTo(11);
-        Query kisilerSorgu = myRef.limitToFirst(3);
+/*        Query kisilerSorgu = myRef.limitToFirst(3);
         kisilerSorgu.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -76,6 +86,63 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("**********","******");
 
                 }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
+        refKisiler.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //ilk calistiginda butun verileri getiriyor.
+                Kisiler kisi = snapshot.getValue(Kisiler.class);
+                String key = snapshot.getKey();
+                kisi.setKisi_key(key);
+
+                Log.e("**********","******");
+                Log.e("kisi_key",kisi.getKisi_key());
+                Log.e("kisi_ad",kisi.getKisi_ad());
+                Log.e("kisi_yas",String.valueOf(kisi.getKisi_yas()));
+                Log.e("**********","******");
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                Kisiler kisi = snapshot.getValue(Kisiler.class);
+                String key = snapshot.getKey();
+                kisi.setKisi_key(key);
+
+                Log.e("**********","******");
+                Log.e("kisi_key",kisi.getKisi_key());
+                Log.e("kisi_ad",kisi.getKisi_ad());
+                Log.e("kisi_yas",String.valueOf(kisi.getKisi_yas()));
+                Log.e("**********","******");
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                Kisiler kisi = snapshot.getValue(Kisiler.class);
+                String key = snapshot.getKey();
+                kisi.setKisi_key(key);
+
+                Log.e("**********","******");
+                Log.e("kisi_key",kisi.getKisi_key());
+                Log.e("kisi_ad",kisi.getKisi_ad());
+                Log.e("kisi_yas",String.valueOf(kisi.getKisi_yas()));
+                Log.e("**********","******");
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
             }
 
