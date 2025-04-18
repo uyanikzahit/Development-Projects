@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "754978501208",
+    "project_id": "deneme-9eba4",
+    "storage_bucket": "deneme-9eba4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754978501208:android:392d1f1b532c49a9b0902d",
+        "android_client_info": {
+          "package_name": "com.example.materialdesign"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVCiIDyIGuXCFMKNVp4QBqPNtapUpS-q0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
