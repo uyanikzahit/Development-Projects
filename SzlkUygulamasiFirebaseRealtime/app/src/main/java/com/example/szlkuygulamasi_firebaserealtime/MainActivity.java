@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Kelimeler>kelimelerListe;
 
-    private KelimelerAdapter adapter;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
 
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         kelimelerListe = new ArrayList<>();
 
-        adapter = new
 
     }
 
