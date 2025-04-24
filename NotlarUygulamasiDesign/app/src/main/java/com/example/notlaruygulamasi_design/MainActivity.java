@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         toolbar = findViewById(R.id.toolbar);
@@ -40,15 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         notlarArrayList = new ArrayList<>();
 
-        Notlar n1 = new Notlar(1,"Tarih", 50,70);
-        Notlar n2 = new Notlar(2,"Türkçe", 60,30);
-        Notlar n3 = new Notlar(3,"İngilizce", 90,80);
 
-        notlarArrayList.add(n1);
-        notlarArrayList.add(n2);
-        notlarArrayList.add(n3);
-
-        adapter = new NotlarAdapter(this,notlarArrayList);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,4 +50,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public void tumNotlar()
 }

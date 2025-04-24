@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.notlaruygulamasi_design"
+    namespace = "com.example.notuygulamasi_firebaserealtimedatabase"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.notlaruygulamasi_design"
+        applicationId = "com.example.notuygulamasi_firebaserealtimedatabase"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -42,4 +42,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }
