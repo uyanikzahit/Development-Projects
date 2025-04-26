@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mainActivityNesnesi"  type="com.example.mvvmkullanimi.MainActivity" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -38,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="ÇARPMA"
+        android:onClick="@{() -> mainActivityNesnesi.buttonCarpmaTikla(editTextSayi1.getText().toString(),editTextSayi2.getText().toString())}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonToplama"
@@ -62,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TOPLAMA"
+        android:onClick="@{() -> mainActivityNesnesi.buttonToplamaTikla(editTextSayi1.getText().toString(),editTextSayi2.getText().toString())}"
         app:layout_constraintEnd_toStartOf="@+id/buttonCarpma"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
