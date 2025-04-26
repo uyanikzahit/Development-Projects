@@ -6,6 +6,10 @@ android {
     namespace = "com.example.mvvmkullanimi"
     compileSdk = 35
 
+    buildFeatures{
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.mvvmkullanimi"
         minSdk = 24
