@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
         tasarim.setMainActivityNesnesi(this);
         setContentView(tasarim.getRoot());
 
-        tasarim.textViewSonuc.setText("0");
+//        tasarim.textViewSonuc.setText("0");
+
+        tasarim.setHesaplamaSonucu("0");
 
     }
 
@@ -31,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         int toplam = sayi1 + sayi2;
 
-        tasarim.textViewSonuc.setText(String.valueOf(toplam));
+        tasarim.setHesaplamaSonucu(String.valueOf(toplam));
+
 
     }
 
@@ -48,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         int carpma = sayi1 * sayi2;
 
         tasarim.textViewSonuc.setText(String.valueOf(carpma));
+
+        tasarim.setHesaplamaSonucu(String.valueOf(carpma));
+
 
     }
 }

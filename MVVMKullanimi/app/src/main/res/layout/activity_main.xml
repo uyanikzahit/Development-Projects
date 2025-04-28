@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="mainActivityNesnesi"  type="com.example.mvvmkullanimi.MainActivity" />
+        <variable name="mainActivityNesnesi"  type="com.example.mvvmkullanimi.MainActivity" />
+        <variable name="hesaplamaSonucu"  type="String" />
+        <import type="android.view.View"/>-
+            
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
@@ -18,7 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
-        android:text="TextView"
+        android:text="@{hesaplamaSonucu}"
+        android:textColor="@{Integer.parseInt(hesaplamaSonucu) > 10 ? @color/black  : @color/green}"
+        android:visibility="@{Integer.parseInt(hesaplamaSonucu) > 20 ? View.INVISIBLE : View.VISIBLE}"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
