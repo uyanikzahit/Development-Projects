@@ -1,11 +1,16 @@
 package com.example.mvvmkullanimi;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MainActivityViewModel extends ViewModel {
-    private String sonuc = "0";
+    private MutableLiveData<String> sonuc;
 
-    public String getSonuc() {
+    public MainActivityViewModel (){
+        sonuc = new MutableLiveData<String >("0");
+    }
+
+    public MutableLiveData<String > getSonuc() {
         return sonuc;
     }
 
@@ -18,8 +23,7 @@ public class MainActivityViewModel extends ViewModel {
         int sayi2 = Integer.parseInt(alinanSayi2);
 
         int toplam = sayi1 + sayi2;
-
-        sonuc = String.valueOf(toplam);
+        sonuc.setValue(String.valueOf(toplam));
 
 
 
@@ -33,8 +37,7 @@ public class MainActivityViewModel extends ViewModel {
         int sayi2 = Integer.parseInt(alinanSayi2);
 
         int carpma = sayi1 * sayi2;
-
-        sonuc = String.valueOf(carpma);
+        sonuc.setValue(String.valueOf(carpma));
 
 
     }
