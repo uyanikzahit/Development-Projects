@@ -41,12 +41,16 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    //Room
-    testImplementation(libs.room.rxjava2)
-    testImplementation(libs.room.compiler)
-    //RxJava
-    testImplementation(libs.room.rxjava2)
-    testImplementation(libs.rxandroid)
+
+// Room
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler) // Java için
+
+// RxJava desteği istiyorsan:
+    implementation(libs.room.rxjava2)
+
+// RxAndroid (isteğe bağlı, eğer kullanıyorsan)
+    implementation(libs.rxandroid)
 
 
 
