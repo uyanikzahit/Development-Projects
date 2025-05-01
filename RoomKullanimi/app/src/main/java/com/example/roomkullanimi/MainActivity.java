@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 
+import io.reactivex.CompletableObserver;
 import io.reactivex.Scheduler;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         vt = Veritabani.veritabaniErisim(this);
         kdao = vt.getKisilerDao();
+
+        ekle();
         kisileriYukle();
 
     }
@@ -52,5 +55,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {}
                 });
+    }
+
+    public void ekle(){
+        Kisiler yeniKisi = new Kisiler(0,"Zahit",24);
+
+        kdao.kisiEkle(yeniKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onComplete() {}
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
+
     }
 }
