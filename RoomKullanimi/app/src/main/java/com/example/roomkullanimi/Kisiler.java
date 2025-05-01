@@ -1,6 +1,7 @@
 package com.example.roomkullanimi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +22,7 @@ public class Kisiler {
     public Kisiler() {
     }
 
+    @Ignore
     public Kisiler(@NotNull int kisi_id, @NotNull String kisi_ad, @NotNull int kisi_yas) {
         this.kisi_id = kisi_id;
         this.kisi_ad = kisi_ad;
