@@ -3,6 +3,7 @@ package com.example.roomkullanimi;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface KisilerDao {
     Single<List<Kisiler>> tumKisiler();
     @Insert
     Completable kisiEkle(Kisiler kisi);
+
+    @Update
+    Completable kisiGuncelle(Kisiler kisi);
 }

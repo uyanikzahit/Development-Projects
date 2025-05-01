@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         vt = Veritabani.veritabaniErisim(this);
         kdao = vt.getKisilerDao();
 
-        ekle();
+//      ekle();
+        guncelle();
         kisileriYukle();
 
     }
@@ -61,6 +62,24 @@ public class MainActivity extends AppCompatActivity {
         Kisiler yeniKisi = new Kisiler(0,"Zahit",24);
 
         kdao.kisiEkle(yeniKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onComplete() {}
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
+
+    }
+
+
+    public void guncelle(){
+        Kisiler guncellenenKisi = new Kisiler(3,"New Zahit",25);
+
+        kdao.kisiGuncelle(guncellenenKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(Disposable d) {}
