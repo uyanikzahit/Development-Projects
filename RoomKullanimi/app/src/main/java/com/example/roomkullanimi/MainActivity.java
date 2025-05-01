@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         kdao = vt.getKisilerDao();
 
 //      ekle();
-        guncelle();
+//      guncelle();
+        sil();
         kisileriYukle();
 
     }
@@ -80,6 +81,23 @@ public class MainActivity extends AppCompatActivity {
         Kisiler guncellenenKisi = new Kisiler(3,"New Zahit",25);
 
         kdao.kisiGuncelle(guncellenenKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onComplete() {}
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
+
+    }
+
+    public void sil(){
+        Kisiler silinenKisi = new Kisiler(3,"New Zahit",25);
+
+        kdao.kisiSil(silinenKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(Disposable d) {}
