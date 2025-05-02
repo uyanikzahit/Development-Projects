@@ -8,9 +8,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity {
-    private Kargo kargo;
-    private Internet internet;
+    @Inject
+    Kargo kargo;
+    @Inject
+    Internet internet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        kargo = new Kargo();
+        DaggerAppComponent.builder().build().inject(this);
+
         kargo.gonder();
 
-        internet = new Internet();
         internet.basvuruYap();
 
     }
