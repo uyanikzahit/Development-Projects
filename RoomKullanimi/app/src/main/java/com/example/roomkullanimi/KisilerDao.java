@@ -23,4 +23,17 @@ public interface KisilerDao {
 
     @Delete
     Completable kisiSil(Kisiler kisi);
+
+    @Query("SELECT * FROM kisiler ORDER BY RANDOM() LIMIT 1")
+    Single<List<Kisiler>> rastgele1KisiGetir();
+
+    @Query("SELECT * FROM kisiler WHERE kisi_ad like '%'|| :aramaKelimesi||'%'")
+    Single<List<Kisiler>> kisiAra(String aramaKelimesi);
+
+    @Query("SELECT * FROM kisiler WHERE kisi_id=:kisi_id" )
+    Single<Kisiler> kisiGetir(int kisi_id);
+
+    @Query("SELECT count(*) FROM kisiler WHERE kisi_ad=:kisi_ad" )
+    Single<Integer> kayitKontrol(String  kisi_ad);
 }
+

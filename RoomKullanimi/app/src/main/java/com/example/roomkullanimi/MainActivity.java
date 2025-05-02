@@ -33,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
 //      ekle();
 //      guncelle();
-        sil();
-        kisileriYukle();
-
+//      sil();
+//      kisileriYukle();
+//      rastgele();
+//        ara();
+//getir();
+        kontrol();
     }
 
     public void kisileriYukle(){
@@ -109,5 +112,85 @@ public class MainActivity extends AppCompatActivity {
                     public void onError(Throwable e) {}
                 });
 
+    }
+
+    public void rastgele(){
+        kdao.rastgele1KisiGetir().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Kisiler>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+
+                    @Override
+                    public void onSuccess(List<Kisiler> kisilers) {
+                        for(Kisiler k:kisilers){
+                            Log.e("Kişi id",String.valueOf(k.getKisi_id()));
+                            Log.e("Kişi ad",k.getKisi_ad());
+                            Log.e("Kişi yaş",String.valueOf(k.getKisi_yas()));
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
+    }
+
+
+    public void ara(){
+        kdao.kisiAra("c").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Kisiler>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+
+                    @Override
+                    public void onSuccess(List<Kisiler> kisilers) {
+                        for(Kisiler k:kisilers){
+                            Log.e("Kişi id",String.valueOf(k.getKisi_id()));
+                            Log.e("Kişi ad",k.getKisi_ad());
+                            Log.e("Kişi yaş",String.valueOf(k.getKisi_yas()));
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
+    }
+
+    public void getir(){
+        kdao.kisiGetir(1).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Kisiler>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onSuccess(Kisiler kisiler) {
+
+                        Log.e("Kişi id",String.valueOf(kisiler.getKisi_id()));
+                        Log.e("Kişi ad",kisiler.getKisi_ad());
+                        Log.e("Kişi yaş",String.valueOf(kisiler.getKisi_yas()));
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
+    }
+
+    public void kontrol() {
+        kdao.kayitKontrol("ali").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onSuccess(Integer integer) {
+                        Log.e("Kişi kayıt kontrol",String.valueOf(integer));
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
     }
 }
