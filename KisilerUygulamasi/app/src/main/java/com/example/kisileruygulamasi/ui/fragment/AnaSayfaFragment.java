@@ -10,6 +10,10 @@ import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.example.kisileruygulamasi.data.entity.Kisiler;
+import com.example.kisileruygulamasi.ui.adapter.*;
 
 import com.example.kisileruygulamasi.databinding.FragmentAnaSayfaBinding;
 
@@ -23,6 +27,8 @@ import android.view.ViewGroup;
 
 import com.example.kisileruygulamasi.R;
 
+import java.util.ArrayList;
+
 
 public class AnaSayfaFragment extends Fragment implements SearchView.OnQueryTextListener{
 
@@ -34,6 +40,20 @@ public class AnaSayfaFragment extends Fragment implements SearchView.OnQueryText
 
         tasarim.toolbarAnasayfa.setTitle("Kişiler");
         ((AppCompatActivity)getActivity()).setSupportActionBar(tasarim.toolbarAnasayfa);
+
+        tasarim.rv.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        ArrayList<Kisiler> kisilerListesi = new ArrayList<>();
+        Kisiler k1 = new Kisiler(1,"Zahit","1111");
+        Kisiler k2 = new Kisiler(2,"Mehmet","2222");
+        Kisiler k3 = new Kisiler(3,"Beyda","3333");
+        kisilerListesi.add(k1);
+        kisilerListesi.add(k2);
+        kisilerListesi.add(k3);
+
+        KisilerAdapter adapter = new KisilerAdapter(requireContext(),kisilerListesi);
+        tasarim.rv.setAdapter(adapter);
+
         tasarim.fab.setOnClickListener(view->{
             Navigation.findNavController(view).navigate(R.id.kisiKayitGecis);
         });
