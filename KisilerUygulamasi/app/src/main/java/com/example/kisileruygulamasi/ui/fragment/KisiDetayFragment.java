@@ -3,6 +3,7 @@ package com.example.kisileruygulamasi.ui.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import com.example.kisileruygulamasi.databinding.FragmentKisiDetayBinding;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,13 @@ import com.example.kisileruygulamasi.R;
 
 
 public class KisiDetayFragment extends Fragment {
+    private FragmentKisiDetayBinding tasarim;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_kisi_detay, container, false);
+
+        tasarim = FragmentKisiDetayBinding.inflate(inflater, container, false);
+        return tasarim.getRoot();
     }
 }
