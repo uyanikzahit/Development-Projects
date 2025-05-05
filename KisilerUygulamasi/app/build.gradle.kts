@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    id("androidx.navigation.safeargs") // Java projeleri için Safe Args eklentisi
+    id("androidx.navigation.safeargs") // Bu doğru kullanım, Java ile uyumlu
 }
 
 android {
@@ -9,6 +9,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {

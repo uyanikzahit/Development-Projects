@@ -65,9 +65,9 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
         });
 
         t.satirCard.setOnClickListener(view -> {
-            AnasayfaFragmentDirections gecis = AnasayfaFragmentDirections.kisiDetayGecis(kisi);
+//            AnasayfaFragmentDirections gecis = AnasayfaFragmentDirections.kisiDetayGecis(kisi);
 
-            Navigation.findNavController(view).navigate(gecis);
+//            Navigation.findNavController(view).navigate(gecis);
         });
 
     }
