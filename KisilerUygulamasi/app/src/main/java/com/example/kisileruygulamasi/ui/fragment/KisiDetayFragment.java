@@ -2,6 +2,7 @@ package com.example.kisileruygulamasi.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import com.example.kisileruygulamasi.databinding.FragmentKisiDetayBinding;
 import com.example.kisileruygulamasi.data.entity.Kisiler;
@@ -11,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.kisileruygulamasi.R;
+import com.example.kisileruygulamasi.ui.fragment.*;
 
 
 public class KisiDetayFragment extends Fragment {
@@ -21,7 +22,7 @@ public class KisiDetayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        tasarim = FragmentKisiDetayBinding.inflate(inflater, container, false);
+        tasarim = DataBindingUtil.inflate(inflater, R.la container, false);
 
         tasarim.toolbarKisiDetay.setTitle("Kişi Detay");
 
@@ -41,7 +42,7 @@ public class KisiDetayFragment extends Fragment {
         return tasarim.getRoot();
     }
 
-    public void guncelle(int kisi_id, String kisi_ad, String kisi_tel){
+    public void buttonGuncelle(int kisi_id, String kisi_ad, String kisi_tel){
         Log.e("Kişi Güncelle",kisi_id +" - "+ kisi_ad+" - "+kisi_tel);
     }
 }
