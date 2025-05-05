@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    id("androidx.navigation.safeargs") // Bu doğru kullanım, Java ile uyumlu
+    id("androidx.navigation.safeargs") // Java projeleri için Safe Args eklentisi
 }
 
 android {

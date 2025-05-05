@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_nav"
     app:startDestination="@id/anaSayfaFragment">
@@ -21,11 +21,7 @@
         android:id="@+id/kisiDetayFragment"
         android:name="com.example.kisileruygulamasi.ui.fragment.KisiDetayFragment"
         android:label="fragment_kisi_detay"
-        tools:layout="@layout/fragment_kisi_detay" >
-        <argument
-            android:name="kisi"
-            app:argType="com.example.kisileruygulamasi.data.entity.Kisiler" />
-    </fragment>
+        tools:layout="@layout/fragment_kisi_detay" />
     <fragment
         android:id="@+id/kisiKayitFragment"
         android:name="com.example.kisileruygulamasi.ui.fragment.KisiKayitFragment"

@@ -91,4 +91,11 @@ public class AnaSayfaFragment extends Fragment implements SearchView.OnQueryText
     public void ara(String aramaKelimesi){
         Log.e("Kişi Ara", aramaKelimesi);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("Kişi anasayfa", " dönüldü");
+
+    }
 }

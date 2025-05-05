@@ -7,14 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kisileruygulamasi.data.entity.Kisiler;
-import com.example.kisileruygulamasi.ui.*;
+import com.example.kisileruygulamasi.ui.fragment.*;
 
 import com.example.kisileruygulamasi.databinding.CardTasarimBinding;
-import com.example.kisileruygulamasi.r;
+import com.example.kisileruygulamasi.*;
 import com.example.kisileruygulamasi.databinding.FragmentAnaSayfaBinding;
+import com.example.kisileruygulamasi.ui.fragment.AnaSayfaFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 
@@ -62,8 +64,10 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
                     }).show();
         });
 
-        t.satirCard.setOnClickListener(view ->{
-            FragmentAnaSayfaBinding. gecis = FragmentAnaSayfaBinding
+        t.satirCard.setOnClickListener(view -> {
+            AnasayfaFragmentDirections gecis = AnasayfaFragmentDirections.kisiDetayGecis(kisi);
+
+            Navigation.findNavController(view).navigate(gecis);
         });
 
     }
