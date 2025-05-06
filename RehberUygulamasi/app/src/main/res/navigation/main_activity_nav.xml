@@ -27,4 +27,7 @@
         android:name="com.example.rehberuygulamasi.ui.fragment.KisiKayitFragment"
         android:label="fragment_kisi_kayit"
         tools:layout="@layout/fragment_kisi_kayit" />
+    <argument
+        android:name="kisi"
+        app:argType="com.example.rehberuygulamasi.data.entity.Kisiler" />
 </navigation>
