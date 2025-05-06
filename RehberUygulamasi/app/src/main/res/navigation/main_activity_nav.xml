@@ -9,25 +9,32 @@
         android:id="@+id/anasayfaFragment"
         android:name="com.example.rehberuygulamasi.ui.fragment.AnasayfaFragment"
         android:label="fragment_anasayfa"
-        tools:layout="@layout/fragment_anasayfa" >
+        tools:layout="@layout/fragment_anasayfa">
+
         <action
             android:id="@+id/kisiDetayGecis"
             app:destination="@id/kisiDetayFragment" />
+
         <action
             android:id="@+id/kisiKayitGecis"
             app:destination="@id/kisiKayitFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/kisiDetayFragment"
         android:name="com.example.rehberuygulamasi.ui.fragment.KisiDetayFragment"
         android:label="fragment_kisi_detay"
-        tools:layout="@layout/fragment_kisi_detay" />
+        tools:layout="@layout/fragment_kisi_detay">
+
+        <argument
+            android:name="kisi"
+            app:argType="com.example.rehberuygulamasi.data.entity.Kisiler"
+            app:nullable="true" />
+    </fragment>
+
     <fragment
         android:id="@+id/kisiKayitFragment"
         android:name="com.example.rehberuygulamasi.ui.fragment.KisiKayitFragment"
         android:label="fragment_kisi_kayit"
         tools:layout="@layout/fragment_kisi_kayit" />
-    <argument
-        android:name="kisi"
-        app:argType="com.example.rehberuygulamasi.data.entity.Kisiler" />
 </navigation>
