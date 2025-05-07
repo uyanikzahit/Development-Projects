@@ -102,4 +102,7 @@ public class AnasayfaFragment extends Fragment implements SearchView.OnQueryText
         Log.e("Kişi anasayfa", " dönüldü");
 
     }
+
+
+
 }
