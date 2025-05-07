@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuProvider;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
 import androidx.navigation.Navigation;
@@ -36,11 +37,11 @@ public class AnasayfaFragment extends Fragment implements SearchView.OnQueryText
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        tasarim = FragmentAnasayfaBinding.inflate(inflater, container, false);
-        tasarim.toolbarAnasayfa.setTitle("Kişiler");
+        tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_anasayfa, container, false);
+        tasarim.setAnasayfaFragment(this);
+        tasarim.setAnasayfaToolbarBaslik("Kişiler");
         ((AppCompatActivity)getActivity()).setSupportActionBar(tasarim.toolbarAnasayfa);
 
-        tasarim.rv.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         ArrayList<Kisiler> kisilerListesi = new ArrayList<>();
         Kisiler k1 = new Kisiler(1,"Zahit","1111");
@@ -51,12 +52,9 @@ public class AnasayfaFragment extends Fragment implements SearchView.OnQueryText
         kisilerListesi.add(k3);
 
         KisilerAdapter adapter = new KisilerAdapter(requireContext(),kisilerListesi);
-        tasarim.rv.setAdapter(adapter);
+        tasarim.setKisilerAdapter(adapter);
 
-        tasarim.fab.setOnClickListener(view ->{
-            Navigation.findNavController(view).navigate(R.id.kisiKayitGecis);
 
-        });
 
         requireActivity().addMenuProvider(new MenuProvider() {
             @Override
@@ -75,7 +73,10 @@ public class AnasayfaFragment extends Fragment implements SearchView.OnQueryText
         },getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
         return tasarim.getRoot();
+    }
 
+    public void fabTikla(View view){
+        Navigation.findNavController(view).navigate(R.id.kisiKayitGecis);
 
 
     }
