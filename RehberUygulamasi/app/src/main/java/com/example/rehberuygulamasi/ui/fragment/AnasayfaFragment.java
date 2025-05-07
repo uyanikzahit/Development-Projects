@@ -3,12 +3,14 @@ package com.example.rehberuygulamasi.ui.fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -25,6 +27,8 @@ import com.example.rehberuygulamasi.ui.adapter.*;
 
 
 import com.example.rehberuygulamasi.R;
+import com.example.rehberuygulamasi.ui.viewmodel.AnasayfaViewModel;
+
 
 import java.util.ArrayList;
 
@@ -32,6 +36,7 @@ import java.util.ArrayList;
 public class AnasayfaFragment extends Fragment implements SearchView.OnQueryTextListener{
 
     private FragmentAnasayfaBinding tasarim;
+    private AnasayfaViewModel viewModel;
 
 
     @Override
@@ -73,6 +78,12 @@ public class AnasayfaFragment extends Fragment implements SearchView.OnQueryText
         },getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
         return tasarim.getRoot();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(AnasayfaViewModel.class);
     }
 
     public void fabTikla(View view){

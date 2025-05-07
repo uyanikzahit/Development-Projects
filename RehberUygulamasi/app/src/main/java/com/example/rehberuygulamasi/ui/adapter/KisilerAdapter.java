@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import com.example.rehberuygulamasi.databinding.*;
 import com.google.android.material.snackbar.Snackbar;
 
 import com.example.rehberuygulamasi.ui.fragment.*;
+import com.example.rehberuygulamasi.R;
 
 
 
@@ -42,7 +44,7 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
     public CardTasarimTutucu onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        CardTasarimBinding tasarim = CardTasarimBinding.inflate(layoutInflater,parent, false);
+        CardTasarimBinding tasarim = DataBindingUtil.inflate(layoutInflater, R.layout.card_tasarim,parent, false);
         return new CardTasarimTutucu(tasarim);
     }
 
@@ -51,7 +53,8 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
         Kisiler kisi = kisilerListesi.get(position);
         CardTasarimBinding t = holder.tasarim;
 
-        t.textViewKisiBilgi.setText(kisi.getKisi_ad()+" - "+kisi.getKisi_tel());
+        t.setKisiNesnesi(kisi);
+
         t.imageViewSil.setOnClickListener(view -> {
             Snackbar.make(view,kisi.getKisi_ad()+" silinsin mi? ",Snackbar.LENGTH_LONG)
                     .setAction("EVET",view1 -> {
