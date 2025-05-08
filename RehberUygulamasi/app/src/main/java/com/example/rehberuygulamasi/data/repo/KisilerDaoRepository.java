@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.example.rehberuygulamasi.room.*;
 
+import io.reactivex.CompletableObserver;
 import io.reactivex.Scheduler;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -31,19 +32,68 @@ public class KisilerDaoRepository {
     }
 
     public void kisiKayit(String kisi_ad, String kisi_tel){
-        Log.e("Kişi Kayıt",kisi_ad+" - "+kisi_tel);
+        Kisiler yeniKisi = new Kisiler(0,kisi_ad,kisi_tel);
+        kdao.kisiEkle(yeniKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+                    @Override
+
+                    public void onComplete() {}
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
+
     }
 
     public void kisiGuncelle(int kisi_id, String kisi_ad, String kisi_tel){
-        Log.e("Kişi Güncelle",kisi_id +" - "+ kisi_ad+" - "+kisi_tel);
+        Kisiler guncellenenKisi = new Kisiler(kisi_id,kisi_ad,kisi_tel);
+        kdao.kisiGuncelle(guncellenenKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+                    @Override
+
+                    public void onComplete() {}
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
     }
 
     public void kisiAra(String aramaKelimesi){
-        Log.e("Kişi Ara", aramaKelimesi);
+
+        kdao.kisiAra(aramaKelimesi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Kisiler>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+                    @Override
+                    public void onSuccess(List<Kisiler> kisilers) {
+
+                        kisilerListesi.setValue(kisilers);
+
+                    }
+                    @Override
+                    public void onError(Throwable e) {}
+                });
     }
 
     public void kisiSil (int kisi_id){
-        Log.e("Kişi Sil",String.valueOf(kisi_id));
+        Kisiler silinenKisi = new Kisiler(kisi_id,"","");
+        kdao.kisiSil(silinenKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+                    @Override
+
+                    public void onComplete() {
+                        tumKisileriAl();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {}
+                });
 
     }
 
