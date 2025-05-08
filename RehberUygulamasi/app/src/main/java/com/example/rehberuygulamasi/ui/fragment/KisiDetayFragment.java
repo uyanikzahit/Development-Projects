@@ -50,6 +50,6 @@ public class KisiDetayFragment extends Fragment {
     }
 
     public void buttonGuncelle(int kisi_id, String kisi_ad, String kisi_tel){
-        Log.e("Kişi Güncelle",kisi_id +" - "+ kisi_ad+" - "+kisi_tel);
+        viewModel.guncelle(kisi_id,kisi_ad,kisi_tel);
     }
 }

@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import com.example.rehberuygulamasi.ui.fragment.*;
 import com.example.rehberuygulamasi.R;
+import com.example.rehberuygulamasi.ui.viewmodel.AnasayfaViewModel;
 
 
 
@@ -24,10 +25,12 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
 
     private Context mContext;
     private List<Kisiler> kisilerListesi;
+    private AnasayfaViewModel viewModel;
 
-    public KisilerAdapter(Context mContext, List<Kisiler> kisilerListesi) {
+    public KisilerAdapter(Context mContext, List<Kisiler> kisilerListesi, AnasayfaViewModel viewModel) {
         this.mContext = mContext;
         this.kisilerListesi = kisilerListesi;
+        this.viewModel = viewModel;
     }
 
     public class CardTasarimTutucu extends RecyclerView.ViewHolder{
@@ -58,7 +61,7 @@ public class KisilerAdapter extends RecyclerView.Adapter<KisilerAdapter.CardTasa
         t.imageViewSil.setOnClickListener(view -> {
             Snackbar.make(view,kisi.getKisi_ad()+" silinsin mi? ",Snackbar.LENGTH_LONG)
                     .setAction("EVET",view1 -> {
-                        Log.e("Kişi Sil",String.valueOf(kisi.getKisi_id()));
+                        viewModel.sil(kisi.getKisi_id());
                     }).show();
         });
 

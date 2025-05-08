@@ -48,16 +48,12 @@ public class AnasayfaFragment extends Fragment implements SearchView.OnQueryText
         ((AppCompatActivity)getActivity()).setSupportActionBar(tasarim.toolbarAnasayfa);
 
 
-        ArrayList<Kisiler> kisilerListesi = new ArrayList<>();
-        Kisiler k1 = new Kisiler(1,"Zahit","1111");
-        Kisiler k2 = new Kisiler(2,"Mehmet","2222");
-        Kisiler k3 = new Kisiler(3,"Beyda","3333");
-        kisilerListesi.add(k1);
-        kisilerListesi.add(k2);
-        kisilerListesi.add(k3);
+       viewModel.kisilerListesi.observe(getViewLifecycleOwner(),liste ->{
+           KisilerAdapter adapter = new KisilerAdapter(requireContext(),liste,viewModel);
+           tasarim.setKisilerAdapter(adapter);
+       });
 
-        KisilerAdapter adapter = new KisilerAdapter(requireContext(),kisilerListesi);
-        tasarim.setKisilerAdapter(adapter);
+
 
 
 
@@ -94,25 +90,23 @@ public class AnasayfaFragment extends Fragment implements SearchView.OnQueryText
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        ara(query);
+        viewModel.ara(query);
         return true;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        ara(newText);
+        viewModel.ara(newText);
         return true;
     }
 
-    public void ara(String aramaKelimesi){
-        Log.e("Kişi Ara", aramaKelimesi);
-    }
+
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("Kişi anasayfa", " dönüldü");
 
+        viewModel.kisileriYukle();
     }
 
 

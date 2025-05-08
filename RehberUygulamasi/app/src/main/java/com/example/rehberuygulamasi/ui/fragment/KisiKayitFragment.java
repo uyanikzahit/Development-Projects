@@ -40,6 +40,6 @@ public class KisiKayitFragment extends Fragment {
     }
 
     public void buttonKaydet(String kisi_ad, String kisi_tel){
-        Log.e("Kişi Kayıt",kisi_ad+" - "+kisi_tel);
+        viewModel.kayit(kisi_ad,kisi_tel);
     }
 }
