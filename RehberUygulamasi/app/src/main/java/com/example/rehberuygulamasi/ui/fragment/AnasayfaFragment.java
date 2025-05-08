@@ -32,7 +32,10 @@ import com.example.rehberuygulamasi.ui.viewmodel.AnasayfaViewModel;
 
 import java.util.ArrayList;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+
+@AndroidEntryPoint
 public class AnasayfaFragment extends Fragment implements SearchView.OnQueryTextListener{
 
     private FragmentAnasayfaBinding tasarim;

@@ -16,7 +16,9 @@ import com.example.rehberuygulamasi.ui.viewmodel.*;
 
 import com.example.rehberuygulamasi.R;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class KisiKayitFragment extends Fragment {
     private KisiKayitViewModel viewModel;
     private FragmentKisiKayitBinding tasarim;

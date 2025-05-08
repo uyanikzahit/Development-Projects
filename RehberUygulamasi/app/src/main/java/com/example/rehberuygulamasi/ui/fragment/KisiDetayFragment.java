@@ -19,12 +19,16 @@ import com.example.rehberuygulamasi.data.entity.*;
 import com.example.rehberuygulamasi.R;
 import com.example.rehberuygulamasi.ui.viewmodel.KisiDetayViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 
 public class KisiDetayFragment extends Fragment {
     private FragmentKisiDetayBinding tasarim;
     private KisiDetayViewModel viewModel;
 
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_kisi_detay, container, false);
