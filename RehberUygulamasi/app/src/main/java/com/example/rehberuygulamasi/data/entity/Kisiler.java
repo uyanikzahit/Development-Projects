@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
-@Entity(tableName = "kisiler ")
+@Entity(tableName = "kisiler")
 public class Kisiler implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "kisi_id")

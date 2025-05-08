@@ -61,7 +61,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.7.1")
     //RxJava
     implementation("androidx.room:room-rxjava2:2.7.1")
-    implementation("io.reactivex.rxjava2:rxandroid:2.0.1")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
 
 
