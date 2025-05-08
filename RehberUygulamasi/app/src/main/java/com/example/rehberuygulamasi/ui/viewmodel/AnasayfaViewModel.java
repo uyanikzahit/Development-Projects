@@ -11,11 +11,19 @@ import com.example.rehberuygulamasi.data.repo.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.HiltAndroidApp;
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class AnasayfaViewModel extends ViewModel {
-    private KisilerDaoRepository krepo = new KisilerDaoRepository();
+    private KisilerDaoRepository krepo;
     public MutableLiveData<List<Kisiler>> kisilerListesi = new MutableLiveData();
 
-    public AnasayfaViewModel(){
+    @Inject
+    public AnasayfaViewModel(KisilerDaoRepository krepo){
+        this.krepo = krepo;
         kisileriYukle();
         kisilerListesi = krepo.kisileriGetir();
     }

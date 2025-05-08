@@ -2,6 +2,7 @@ plugins {
 //    alias(libs.plugins.android.application)
     id("com.android.application")
     id("androidx.navigation.safeargs")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -52,4 +53,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation(libs.lifecycle.viewmodel)
+    implementation("com.google.dagger:hilt-android:2.42")
+    annotationProcessor("com.google.dagger:hilt-android-compiler:2.42")
+
 }
