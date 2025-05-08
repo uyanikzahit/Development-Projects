@@ -56,4 +56,13 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.42")
     annotationProcessor("com.google.dagger:hilt-android-compiler:2.42")
 
+    //Room
+    implementation("androidx.room:room-rxjava2:2.7.1")
+    annotationProcessor("androidx.room:room-compiler:2.7.1")
+    //RxJava
+    implementation("androidx.room:room-rxjava2:2.7.1")
+    implementation("io.reactivex.rxjava2:rxandroid:2.0.1")
+
+
+
 }
