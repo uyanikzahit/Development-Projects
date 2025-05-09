@@ -13,7 +13,7 @@ public class Kisiler implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "kisi_id")
     @NotNull
-    private String kisi_id;
+    private int kisi_id;
     @ColumnInfo(name = "kisi_ad")
     @NotNull
     private String kisi_ad;
@@ -25,17 +25,18 @@ public class Kisiler implements Serializable {
     public Kisiler() {
     }
 
-    public Kisiler(@NotNull String kisi_id, @NotNull String kisi_ad, @NotNull String kisi_tel) {
+    public Kisiler(@NotNull int kisi_id, @NotNull String kisi_ad, @NotNull String kisi_tel) {
         this.kisi_id = kisi_id;
         this.kisi_ad = kisi_ad;
         this.kisi_tel = kisi_tel;
     }
 
-    public @NotNull String getKisi_id() {
+    @NotNull
+    public int getKisi_id() {
         return kisi_id;
     }
 
-    public void setKisi_id(@NotNull String kisi_id) {
+    public void setKisi_id(@NotNull int kisi_id) {
         this.kisi_id = kisi_id;
     }
 
