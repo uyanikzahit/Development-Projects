@@ -32,7 +32,7 @@ public class KisilerDaoRepository {
     }
 
     public void kisiKayit(String kisi_ad, String kisi_tel){
-        Kisiler yeniKisi = new Kisiler(0,kisi_ad,kisi_tel);
+        Kisiler yeniKisi = new Kisiler("0",kisi_ad,kisi_tel);
         kdao.kisiEkle(yeniKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {
                     @Override
@@ -47,7 +47,7 @@ public class KisilerDaoRepository {
 
     }
 
-    public void kisiGuncelle(int kisi_id, String kisi_ad, String kisi_tel){
+    public void kisiGuncelle(String kisi_id, String kisi_ad, String kisi_tel){
         Kisiler guncellenenKisi = new Kisiler(kisi_id,kisi_ad,kisi_tel);
         kdao.kisiGuncelle(guncellenenKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {
@@ -79,7 +79,7 @@ public class KisilerDaoRepository {
                 });
     }
 
-    public void kisiSil (int kisi_id){
+    public void kisiSil (String kisi_id){
         Kisiler silinenKisi = new Kisiler(kisi_id,"","");
         kdao.kisiSil(silinenKisi).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {

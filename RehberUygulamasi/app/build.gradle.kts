@@ -3,6 +3,7 @@ plugins {
     id("com.android.application")
     id("androidx.navigation.safeargs")
     id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -64,6 +65,9 @@ dependencies {
     //RxJava
     implementation("androidx.room:room-rxjava2:2.7.1")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+    implementation("com.google.firebase:firebase-database:21.0.0")
 
 
 
