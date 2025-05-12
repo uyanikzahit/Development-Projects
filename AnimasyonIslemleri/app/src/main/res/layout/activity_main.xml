@@ -8,20 +8,6 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonYap"
-        android:layout_width="217dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="53dp"
-        android:background="#E91E63"
-        android:backgroundTint="#E91E63"
-        android:text="Yap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#E91E63" />
-
-    <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,4 +16,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonYap"
+        android:layout_width="326dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="63dp"
+        android:text="Yap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
