@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "956739541780",
+    "firebase_url": "https://rehber-980ae-default-rtdb.firebaseio.com",
+    "project_id": "rehber-980ae",
+    "storage_bucket": "rehber-980ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956739541780:android:26c4acc5132c6542fe8001",
+        "android_client_info": {
+          "package_name": "com.example.rehberuygulamasi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxyIk32MW5Sy6vfRnZDbxxsmbNNowFY-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
