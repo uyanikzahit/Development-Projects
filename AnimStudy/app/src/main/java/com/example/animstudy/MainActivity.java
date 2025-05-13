@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button, buttonYap;
+    private Button button,buttonYap;
 
     private Animation animasyon;
     @Override
@@ -27,13 +27,10 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         buttonYap = findViewById(R.id.buttonYap);
 
-        animasyon = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotatecalismasi);
+        animasyon = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.translatecalismasi);
 
-        buttonYap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                button.setAnimation(animasyon);
-            }
+        buttonYap.setOnClickListener((view) ->{
+            button.startAnimation(animasyon);
         });
 
     }
