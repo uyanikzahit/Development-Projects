@@ -1,4 +1,4 @@
-package com.example.animasyonislemleri;
+package com.example.animstudy;
 
 import android.os.Bundle;
 import android.view.View;
