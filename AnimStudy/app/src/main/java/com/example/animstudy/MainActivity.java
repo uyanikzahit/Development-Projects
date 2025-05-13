@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         buttonYap = findViewById(R.id.buttonYap);
 
-        animasyon = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.scalecalismasi);
+        animasyon = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotatecalismasi);
 
         buttonYap.setOnClickListener(new View.OnClickListener() {
             @Override
