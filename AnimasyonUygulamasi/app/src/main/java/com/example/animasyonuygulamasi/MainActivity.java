@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
 
     private Animation downstop;
+    private Animation uptodown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +29,12 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         textView = findViewById(R.id.textView);
 
-        downstop = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.downstop);
+        downstop = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.downtoup);
+        uptodown = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.uptodown);
 
         button.setAnimation(downstop);
+        textView.setAnimation(uptodown);
+        ımageView.setAnimation(uptodown);
 
     }
 }
