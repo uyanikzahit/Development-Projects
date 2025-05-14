@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     fabBirinci.startAnimation(fabkapali);
                     fabIkinci.startAnimation(fabkapali);
                     fabBirinci.setClickable(false);
+
                     fabIkinci.setClickable(false);
                     fabDurum = false;
 
