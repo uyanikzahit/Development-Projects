@@ -11,8 +11,8 @@
         android:id="@+id/fabMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="84dp"
         android:clickable="true"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,27 +20,27 @@
         app:srcCompat="@drawable/main_resim" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabBirinci"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="35dp"
-        android:clickable="true"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/fabMain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/arrow_up_float" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabIkinci"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="36dp"
         android:clickable="true"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/fabBirinci"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@color/design_default_color_primary" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBirinci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/fabMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/arrow_up_float" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
