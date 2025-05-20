@@ -1,7 +1,9 @@
     package com.example.a2doyun;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,7 +17,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class OyunEkraniActivity extends AppCompatActivity {
+import java.sql.Time;
+import java.util.Timer;
+import java.util.TimerTask;
+
+    public class OyunEkraniActivity extends AppCompatActivity {
     private ConstraintLayout cl;
     private TextView textViewSkor;
     private TextView textViewOyunaBasla;
@@ -24,6 +30,21 @@ public class OyunEkraniActivity extends AppCompatActivity {
     private ImageView siyahkare;
     private ImageView kirmiziucgen;
 
+
+    //Pozisyonlar
+    private int anakarakterX;
+    private int anakarakterY;
+
+    //Kontroller
+    private boolean dokunmaKontrol = false;
+    private boolean baslangicKontrol = false;
+
+    private Timer timer = new Timer();
+    private Handler handler = new Handler();
+
+
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,19 +57,50 @@ public class OyunEkraniActivity extends AppCompatActivity {
         anakarakter = findViewById(R.id.anakarakter);
         saridaire = findViewById(R.id.saridaire);
         siyahkare = findViewById(R.id.siyahkare);
-        kirmiziucgen = findViewById(R.id.kirmiziucgen);
 
 
         cl.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-                    Log.e("MotionEvent","Ekrana dokunuldu");
+
+                if(baslangicKontrol){
+                    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                        Log.e("MotionEvent","Ekrana dokunuldu");
+                        dokunmaKontrol = true;
+                    }
+
+                    if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                        Log.e("MotionEvent","Ekranı bıraktı");
+                        dokunmaKontrol = false;
+
+                    }
+                }else{
+                    baslangicKontrol = true;
+
+                    anakarakterX =(int) anakarakter.getX();
+                    anakarakterY =(int) anakarakter.getY();
+
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(dokunmaKontrol){
+                                        anakarakterY-=20;
+                                    }else{
+                                        anakarakterY+=20;
+                                    }
+                                    anakarakter.setY(anakarakterY);
+
+                                }
+                            });
+
+                        }
+                    },0,20);
                 }
 
-                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
-                    Log.e("MotionEvent","Ekranı bıraktı");
-                }
+
                 return true;
             }
         });
