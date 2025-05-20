@@ -45,6 +45,7 @@ import java.util.TimerTask;
     private int kirmiziucgenY;
 
 
+    private int skor = 0;
 
 
     //Boyutlar
@@ -122,6 +123,7 @@ import java.util.TimerTask;
                                 public void run() {
                                     anakarakterHaraketEttirme();
                                     cisimleriHareketEttir();
+                                    carpismaKontrol();
                                 }
                             });
 
@@ -181,5 +183,45 @@ import java.util.TimerTask;
 
         kirmiziucgen.setX(kirmiziucgenX);
         kirmiziucgen.setY(kirmiziucgenY);
+    }
+
+    public void carpismaKontrol(){
+        int saridaireMerkezX = saridaireX+ saridaire.getWidth()/2;
+        int saridaireMerkezY = saridaireY+ saridaire.getHeight()/2;
+
+        if(0<= saridaireMerkezX && saridaireMerkezX<=anakarakterGenisligi && anakarakterY <=saridaireMerkezY
+                && saridaireMerkezY <= anakarakterY+anakarakterYuksekligi){
+
+            skor+=20;
+            saridaireX = -10;
+        }
+
+
+
+        int kirmiziucgenMerkezX = kirmiziucgenX+ kirmiziucgen.getWidth()/2;
+        int kirmiziucgenMerkezY = kirmiziucgenY+ kirmiziucgen.getHeight()/2;
+
+        if(0<= kirmiziucgenMerkezX && kirmiziucgenMerkezX<=anakarakterGenisligi && anakarakterY <=kirmiziucgenMerkezY
+                && kirmiziucgenMerkezY <= anakarakterY+anakarakterYuksekligi){
+
+            skor+=50;
+            kirmiziucgenX = -10;
+        }
+
+
+
+        int siyahkareMerkezX = siyahkareX+ siyahkare.getWidth()/2;
+        int siyahkareMerkezY = siyahkareY+ siyahkare.getHeight()/2;
+
+        if(0<= siyahkareMerkezX && siyahkareMerkezX<=anakarakterGenisligi && anakarakterY <=siyahkareMerkezY
+                && siyahkareMerkezY <= anakarakterY+anakarakterYuksekligi){
+
+            siyahkareX = -10;
+
+            //Timer durdur
+            timer.cancel();
+            timer=null;
+        }
+        textViewSkor.setText(String.valueOf(skor));
     }
 }
