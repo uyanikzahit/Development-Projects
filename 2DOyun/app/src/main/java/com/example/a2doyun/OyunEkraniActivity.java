@@ -2,6 +2,8 @@
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,12 +38,18 @@ public class OyunEkraniActivity extends AppCompatActivity {
         siyahkare = findViewById(R.id.siyahkare);
         kirmiziucgen = findViewById(R.id.kirmiziucgen);
 
-        textViewOyunaBasla.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(OyunEkraniActivity.this, SonucEkraniActivity .class));
-                finish();
 
+        cl.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    Log.e("MotionEvent","Ekrana dokunuldu");
+                }
+
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    Log.e("MotionEvent","Ekranı bıraktı");
+                }
+                return true;
             }
         });
 
