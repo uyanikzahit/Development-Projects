@@ -221,6 +221,10 @@ import java.util.TimerTask;
             //Timer durdur
             timer.cancel();
             timer=null;
+
+            Intent intent = new Intent(OyunEkraniActivity.this,SonucEkraniActivity.class);
+            intent.putExtra("skor", skor);
+            startActivity(intent);
         }
         textViewSkor.setText(String.valueOf(skor));
     }
