@@ -35,6 +35,12 @@ import java.util.TimerTask;
     private int anakarakterX;
     private int anakarakterY;
 
+    //Boyutlar
+    private int ekranGenisligi;
+    private int ekranYuksekligi;
+    private int anakarakterGenisligi;
+    private int anakarakterYuksekligi;
+
     //Kontroller
     private boolean dokunmaKontrol = false;
     private boolean baslangicKontrol = false;
@@ -77,8 +83,15 @@ import java.util.TimerTask;
                 }else{
                     baslangicKontrol = true;
 
+                    textViewOyunaBasla.setVisibility(View.INVISIBLE);
+
                     anakarakterX =(int) anakarakter.getX();
                     anakarakterY =(int) anakarakter.getY();
+
+                    anakarakterGenisligi = anakarakter.getWidth();
+                    anakarakterYuksekligi = anakarakter.getHeight();
+                    ekranGenisligi = cl.getWidth();
+                    ekranYuksekligi = cl.getHeight();
 
                     timer.schedule(new TimerTask() {
                         @Override
@@ -86,12 +99,7 @@ import java.util.TimerTask;
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if(dokunmaKontrol){
-                                        anakarakterY-=20;
-                                    }else{
-                                        anakarakterY+=20;
-                                    }
-                                    anakarakter.setY(anakarakterY);
+                                    anakarakterHaraketEttirme();
 
                                 }
                             });
@@ -106,5 +114,20 @@ import java.util.TimerTask;
         });
 
 
+    }
+    public void anakarakterHaraketEttirme(){
+        if(dokunmaKontrol){
+            anakarakterY-=20;
+        }else{
+            anakarakterY+=20;
+        }
+
+        if(anakarakterY <= 0){
+            anakarakterY = 0;
+        }
+        if(anakarakterY >= ekranYuksekligi - anakarakterYuksekligi){
+            anakarakterY = ekranYuksekligi - anakarakterYuksekligi;
+        }
+        anakarakter.setY(anakarakterY);
     }
 }
