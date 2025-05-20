@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.sql.Time;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -30,10 +31,21 @@ import java.util.TimerTask;
     private ImageView siyahkare;
     private ImageView kirmiziucgen;
 
-
     //Pozisyonlar
     private int anakarakterX;
     private int anakarakterY;
+
+    private int saridaireX;
+    private int saridaireY;
+
+    private int siyahkareX;
+    private int siyahkareY;
+
+    private int kirmiziucgenX;
+    private int kirmiziucgenY;
+
+
+
 
     //Boyutlar
     private int ekranGenisligi;
@@ -63,7 +75,16 @@ import java.util.TimerTask;
         anakarakter = findViewById(R.id.anakarakter);
         saridaire = findViewById(R.id.saridaire);
         siyahkare = findViewById(R.id.siyahkare);
+        kirmiziucgen = findViewById(R.id.kirmiziucgen);
 
+
+        //Cisimleri ekranın dışına çıkarma
+        siyahkare.setX(-80);
+        siyahkare.setY(-80);
+        saridaire.setX(-80);
+        saridaire.setY(-80);
+        kirmiziucgen.setX(-80);
+        kirmiziucgen.setY(-80);
 
         cl.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -100,7 +121,7 @@ import java.util.TimerTask;
                                 @Override
                                 public void run() {
                                     anakarakterHaraketEttirme();
-
+                                    cisimleriHareketEttir();
                                 }
                             });
 
@@ -129,5 +150,36 @@ import java.util.TimerTask;
             anakarakterY = ekranYuksekligi - anakarakterYuksekligi;
         }
         anakarakter.setY(anakarakterY);
+    }
+
+    public void cisimleriHareketEttir(){
+
+        siyahkareX-=15;
+        if(siyahkareX <0){
+            siyahkareX = ekranGenisligi +20;
+            siyahkareY = (int) Math.floor(Math.random() * ekranYuksekligi);
+        }
+
+        siyahkare.setX(siyahkareX);
+        siyahkare.setY(siyahkareY);
+
+        saridaireX-=20;
+        if(saridaireX <0){
+            saridaireX = ekranGenisligi +20;
+            saridaireY = (int) Math.floor(Math.random() * ekranYuksekligi);
+        }
+
+        saridaire.setX(saridaireX);
+        saridaire.setY(saridaireY);
+
+
+        kirmiziucgenX-=25;
+        if(kirmiziucgenX <0){
+            kirmiziucgenX = ekranGenisligi +20;
+            kirmiziucgenY = (int) Math.floor(Math.random() * ekranYuksekligi);
+        }
+
+        kirmiziucgen.setX(kirmiziucgenX);
+        kirmiziucgen.setY(kirmiziucgenY);
     }
 }
