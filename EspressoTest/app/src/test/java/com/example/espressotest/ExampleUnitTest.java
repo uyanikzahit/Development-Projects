@@ -1,4 +1,4 @@
-package com.example.unittest;
+package com.example.espressotest;
 
 import org.junit.Test;
 
@@ -13,16 +13,5 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
-    }
-
-
-    @Test
-    public void deneme(){
-        int toplam  =0;
-
-        for (int i = 0;i<5;i++){
-            toplam = toplam +i;
-        }
-        assertEquals(10,toplam);
     }
 }
